@@ -76,6 +76,8 @@
     </div>
     <script src="js/jquery-1.7.2.min.js"></script>
     <script src="js/gantt.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/datas.js"></script>
 
     <script>
       
@@ -83,93 +85,27 @@
       $(function() {
 
         "use strict";
-
-        $(".gantt").gantt({
-          source: [
-          {
-            name: "第一阶段",
-            desc: "前期准备1",
-            values: [
-              {
-                from: `/Date(${new Date("2021/02/23").getTime()})/`,
-                to: `/Date(${new Date("2021/02/27").getTime()})/`,
-                label: "需求整理", 
-                customClass: "ganttRed",
-                dataObj: {
-                  from: "2021/02/23",
-                  from: "2021/02/27",
-                }
-              },
-            ]
-          },
-          {
-            name: "",
-            desc: "前期准备2",
-            values: [
-              {
-                from: `/Date(${new Date("2021/02/25").getTime()})/`,
-                to: `/Date(${new Date("2021/03/04").getTime()})/`,
-                label: "技术培训", 
-                customClass: "ganttGreen",
-                dataObj: {
-                  from: "2021/02/25",
-                  from: "2021/03/04",
-                }
-              }
-            ]
-          },
-
-          {
-            name: "第二阶段",
-            desc: "开发1",
-            values: [
-              {
-                from: `/Date(${new Date("2021/03/05").getTime()})/`,
-                to: `/Date(${new Date("2021/03/10").getTime()})/`,
-                label: "开发1", 
-                customClass: "ganttBlue",
-                dataObj: {
-                  from: "2021/03/05",
-                  from: "2021/03/10",
-                }
-              },
-            ]
-          },
-          {
-            name: "",
-            desc: "开发2",
-            values: [
-              {
-                from: `/Date(${new Date("2021/03/11").getTime()})/`,
-                to: `/Date(${new Date("2021/03/30").getTime()})/`,
-                label: "开发2", 
-                customClass: "ganttBlue",
-                dataObj: {
-                  from: "2021/03/11",
-                  from: "2021/03/30",
-                }
-              },
-            ]
-          },
-          ],
+        const GanttDatas = {
+          source: genSources(Sources),
           navigate: "scroll",
           scale: "days",
           maxScale: "months",
           minScale: "days",
           dow: ["日", "一", "二", "三", "四", "五", "六"],
           itemsPerPage: 10,
-          onItemClick: function(data) {
+          onItemClick: function (data) {
             alert(JSON.stringify(data));
           },
-          onAddClick: function(dt, rowId) {
+          onAddClick: function (dt, rowId) {
             // alert("Empty space clicked - add an item!");
           },
-          onRender: function() {
+          onRender: function () {
             if (window.console && typeof console.log === "function") {
               console.log("chart rendered");
             }
-          }
-        });
+          },
+        };
+        $(".gantt").gantt(GanttDatas);
       });
 
       

@@ -3,6 +3,22 @@
  * @LastEditors: linxiaozhou.com
  * @Description: file content
  */
+const getStyle = (flag) => {
+  switch (flag) {
+    case Flags.common:
+      return "ganttBlue";
+    case Flags.frontend:
+      return "ganttGreen";
+    case Flags.backend:
+      return "ganttRed";
+    case Flags.test:
+      return "ganttOrange";
+    case Flags.others:
+      return "ganttPink";
+  }
+  return "";
+};
+
 const genSources = (raw) => {
   const converted = [];
 
@@ -15,8 +31,9 @@ const genSources = (raw) => {
   for (let section of raw) {
     const tasks = section.tasks;
     Object.entries(tasks).reduce((temp, [taskId, task], index) => {
+      let refTask = null;
       if (task.after) {
-        const refTask = list[task.after];
+        refTask = list[task.after];
         const refDate = new Date(refTask.to);
 
         // 计算开始
@@ -45,10 +62,12 @@ const genSources = (raw) => {
             from: `/Date(${new Date(task.from).getTime()})/`,
             to: `/Date(${new Date(task.to).getTime()})/`,
             label: task.name,
-            customClass: "ganttRed",
+            customClass: getStyle(task.flag),
             dataObj: {
-              from: task.from,
-              from: task.to,
+              label: task.name,
+              from: new Date(task.from),
+              to: new Date(task.to),
+              after: refTask,
             },
           },
         ],

@@ -83,7 +83,6 @@
       
 
       $(function() {
-
         "use strict";
         const GanttDatas = {
           source: genSources(Sources),
@@ -92,9 +91,9 @@
           maxScale: "months",
           minScale: "days",
           dow: ["日", "一", "二", "三", "四", "五", "六"],
-          itemsPerPage: 10,
+          itemsPerPage: 10000,
           onItemClick: function (data) {
-            alert(JSON.stringify(data));
+            alert(JSON.stringify(data, null, 2));
           },
           onAddClick: function (dt, rowId) {
             // alert("Empty space clicked - add an item!");

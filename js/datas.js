@@ -46,14 +46,31 @@
  *   },
  * ];
  */
+const Flags = {
+  common: "通用",
+  backend: "后端",
+  frontend: "前端",
+  test: "测试",
+  others: "其他",
+};
 const ConvertText2Data = (text) => {
   return [
     // Section 1
     {
       section: "辅助工作--业务培训",
       tasks: {
-        des7: { name: "业务了解", from: "2021-03-14", to: "2021-03-15" },
-        des8: { name: "业务讨论", from: "2021-03-14", to: "2021-03-15" },
+        des7: {
+          flag: Flags.common,
+          name: "业务了解",
+          from: "2021-03-14",
+          to: "2021-03-15",
+        },
+        des8: {
+          flag: Flags.common,
+          name: "业务讨论",
+          from: "2021-03-14",
+          to: "2021-03-15",
+        },
       },
     },
 
@@ -61,12 +78,42 @@ const ConvertText2Data = (text) => {
     {
       section: "辅助工作--技术培训",
       tasks: {
-        des1: { name: "代码规范", from: "2021-03-14", to: "2021-03-15" },
-        des2: { name: "错误码规范", from: "2021-03-14", to: "2021-03-15" },
-        des3: { name: "版本管理", from: "2021-03-14", to: "2021-03-15" },
-        des4: { name: "代码提交流程", after: "des1", period: "1d" },
-        des5: { name: "单元测试规范", after: "des1", period: "1d" },
-        des6: { name: "集成测试规范", after: "des1", period: "1d" },
+        des1: {
+          flag: Flags.backend,
+          name: "代码规范",
+          from: "2021-03-14",
+          to: "2021-03-15",
+        },
+        des2: {
+          flag: Flags.backend,
+          name: "错误码规范",
+          from: "2021-03-14",
+          to: "2021-03-15",
+        },
+        des3: {
+          flag: Flags.backend,
+          name: "版本管理",
+          from: "2021-03-14",
+          to: "2021-03-15",
+        },
+        des4: {
+          flag: Flags.backend,
+          name: "代码提交流程",
+          after: "des1",
+          period: "1d",
+        },
+        des5: {
+          flag: Flags.backend,
+          name: "单元测试规范",
+          after: "des1",
+          period: "1d",
+        },
+        des6: {
+          flag: Flags.backend,
+          name: "集成测试规范",
+          after: "des1",
+          period: "1d",
+        },
       },
     },
   ];

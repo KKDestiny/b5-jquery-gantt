@@ -3,6 +3,14 @@
  * @LastEditors: linxiaozhou.com
  * @Description: file content
  */
+const Flags = {
+  common: "通用",
+  backend: "后端",
+  frontend: "前端",
+  test: "测试",
+  others: "其他",
+};
+
 const getStyle = (flag) => {
   switch (flag) {
     case Flags.common:

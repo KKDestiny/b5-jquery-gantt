@@ -63,7 +63,7 @@
 
       <div class="contain">
         <div class="">
-          <h2>项目甘特图</h2>
+          <h2 id="ganttTitle">项目甘特图</h2>
         </div>
 
         <div class="gantt">
@@ -76,14 +76,17 @@
     </div>
     <script src="js/jquery-1.7.2.min.js"></script>
     <script src="js/gantt.js"></script>
-    <script src="js/utils.js"></script>
+    <script src="js/gantt.utils.js"></script>
     <script src="js/datas.js"></script>
+    <script src="js/utils.js"></script>
 
     <script>
       
 
       $(function() {
         "use strict";
+        const {config, data: Sources} = genGanttData(GanttData);
+        $("#ganttTitle").html(config.title || "甘特图")
         const GanttDatas = {
           source: genSources(Sources),
           navigate: "scroll",

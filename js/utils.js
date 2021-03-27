@@ -28,6 +28,7 @@ const getStyle = (flag) => {
 };
 
 const genSources = (raw) => {
+  // console.log(JSON.stringify(raw, null, 2));
   const converted = [];
 
   const list = {};
@@ -84,6 +85,7 @@ const genSources = (raw) => {
       return temp;
     }, converted);
   }
+  // console.log(JSON.stringify(converted, null, 2));
 
   return converted;
 };
